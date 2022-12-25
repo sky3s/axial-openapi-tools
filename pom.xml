@@ -7,10 +7,11 @@
     <artifactId>openapi-manager</artifactId>
     <version>0.0.1</version>
 
-    <name>openapi-manager</name>
-    <description>Axial Spring Boot Openapi Manager</description>
-
     <packaging>jar</packaging>
+
+    <name>openapi-manager</name>
+    <description>Axial Spring Boot Openapi Manager, a tool for managing openapi definitions easily</description>
+    <url>https://github.com/sky3s/spring-openapi-manager</url>
 
     <properties>
 
