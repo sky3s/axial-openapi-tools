@@ -7,7 +7,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Created on December 2022
+ * This interface can be using for defining or modifying default headers,
+ * also can be using in your project modules such as security modules.
  */
 public interface ApiCustomizer {
 

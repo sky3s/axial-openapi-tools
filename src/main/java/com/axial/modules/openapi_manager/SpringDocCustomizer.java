@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Created on December 2022
  */
-@PropertySource("classpath:default-springdoc-config.properties")
 @Configuration
+@PropertySource("classpath:default-springdoc-config.properties")
 public class SpringDocCustomizer {
 
     private final ApplicationApiConfig applicationConfig;
@@ -50,6 +50,20 @@ public class SpringDocCustomizer {
         return createGroupedOpenApi(4);
     }
 
+    @Bean
+    GroupedOpenApi addApi5() {
+        return createGroupedOpenApi(5);
+    }
+
+    @Bean
+    GroupedOpenApi addApi6() {
+        return createGroupedOpenApi(6);
+    }
+
+    @Bean
+    GroupedOpenApi addApi7() {
+        return createGroupedOpenApi(7);
+    }
 
     private GroupedOpenApi createGroupedOpenApi(int apiIndex) {
 
