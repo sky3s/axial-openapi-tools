@@ -14,28 +14,28 @@ public class SecurityHeaderConfig {
         return key;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getExample() {
-        return example;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getExample() {
+        return example;
+    }
+
     public void setExample(String example) {
         this.example = example;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {

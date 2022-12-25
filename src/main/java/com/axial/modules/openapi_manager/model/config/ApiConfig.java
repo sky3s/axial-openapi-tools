@@ -27,44 +27,44 @@ public class ApiConfig {
         return name;
     }
 
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public Map<String, SecurityHeaderConfig> getSecurityHeaders() {
-        return securityHeaders;
-    }
-
-    public Map<String, HeaderConfig> getHeaders() {
-        return headers;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGroupName() {
+        return groupName;
     }
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
 
+    public String getPath() {
+        return path;
+    }
+
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public Map<String, SecurityHeaderConfig> getSecurityHeaders() {
+        return securityHeaders;
     }
 
     public void setSecurityHeaders(Map<String, SecurityHeaderConfig> securityHeaders) {
         this.securityHeaders = securityHeaders;
     }
 
+    public Map<String, HeaderConfig> getHeaders() {
+        return headers;
+    }
+
     public void setHeaders(Map<String, HeaderConfig> headers) {
         this.headers = headers;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {

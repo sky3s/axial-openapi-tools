@@ -1,14 +1,15 @@
-package com.axial.modules.openapi_manager.model.config;
+package com.axial.modules.openapi_manager.model;
 
-public class HeaderConfig {
+public class AppHeader {
 
+    /**
+     * Key pass via Header, actual key of header
+     */
     private String name;
-
-    private Boolean required;
 
     private String defaultValue;
 
-    private String example;
+    private boolean required;
 
     private String description;
 
@@ -20,14 +21,6 @@ public class HeaderConfig {
         this.name = name;
     }
 
-    public Boolean getRequired() {
-        return required;
-    }
-
-    public void setRequired(Boolean required) {
-        this.required = required;
-    }
-
     public String getDefaultValue() {
         return defaultValue;
     }
@@ -36,12 +29,12 @@ public class HeaderConfig {
         this.defaultValue = defaultValue;
     }
 
-    public String getExample() {
-        return example;
+    public boolean isRequired() {
+        return required;
     }
 
-    public void setExample(String example) {
-        this.example = example;
+    public void setRequired(boolean required) {
+        this.required = required;
     }
 
     public String getDescription() {
