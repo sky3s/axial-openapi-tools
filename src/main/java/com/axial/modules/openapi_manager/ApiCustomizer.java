@@ -4,6 +4,7 @@ import com.axial.modules.openapi_manager.model.ApiHeader;
 import com.axial.modules.openapi_manager.model.config.SecurityHeaderConfig;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -41,14 +42,8 @@ public interface ApiCustomizer {
     default List<SecurityHeaderConfig> getSecurityHeaders() {
         return OpenApiUtils.emptyIfNull(getHeaders()).stream()
                 .filter(ApiHeader::isDefaultSecurityHeader)
-                .map(header -> {
-                    SecurityHeaderConfig securityHeader = new SecurityHeaderConfig();
-                    securityHeader.setKey(header.getKey());
-                    securityHeader.setName(header.getName());
-                    securityHeader.setExample(header.getDefaultValue());
-                    securityHeader.setDescription(header.getDescription());
-                    return securityHeader;
-                }).collect(Collectors.toUnmodifiableList());
+                .map(OpenApiUtils::convertApiHeaderToSecurityHeaderConfig)
+                .collect(Collectors.toUnmodifiableList());
     }
 
 }
