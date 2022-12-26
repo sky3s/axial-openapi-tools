@@ -39,12 +39,13 @@ class OpenApiUtils {
         if (Objects.isNull(apiHeader)) {
             return null;
         }
-        final SecurityHeaderConfig securityHeader = new SecurityHeaderConfig();
-        securityHeader.setKey(apiHeader.getKey());
-        securityHeader.setName(apiHeader.getName());
-        securityHeader.setExample(apiHeader.getDefaultValue());
-        securityHeader.setDescription(apiHeader.getDescription());
-        return securityHeader;
+        return SecurityHeaderConfig
+                .builder()
+                .key(apiHeader.getKey())
+                .name(apiHeader.getName())
+                .example(apiHeader.getDefaultValue())
+                .description(apiHeader.getDescription())
+                .build();
     }
 
 }

@@ -1,7 +1,10 @@
 package com.axial.modules.openapi_manager;
 
 import com.axial.modules.openapi_manager.model.ApiHeader;
-import com.axial.modules.openapi_manager.model.config.*;
+import com.axial.modules.openapi_manager.model.config.ApiConfig;
+import com.axial.modules.openapi_manager.model.config.ApplicationApiConfig;
+import com.axial.modules.openapi_manager.model.config.HeaderConfig;
+import com.axial.modules.openapi_manager.model.config.SecurityHeaderConfig;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.PathItem;
@@ -11,8 +14,8 @@ import io.swagger.v3.oas.models.parameters.HeaderParameter;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
-import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -24,6 +27,7 @@ import java.util.stream.Collectors;
  */
 //@Configuration
 @Component
+@PropertySource("classpath:default-springdoc-config.properties")
 public class SpringDocCustomizerActions {
 
     private static final String HDR_PREFIX = "hdr";
@@ -34,44 +38,10 @@ public class SpringDocCustomizerActions {
 
     private final ApiCustomizer apiCustomizer;
 
-    // private static int apiIndex = 0;
 
     public SpringDocCustomizerActions(ApplicationApiConfig applicationApiConfig, ApiCustomizer apiCustomizer) {
         this.applicationApiConfig = applicationApiConfig;
         this.apiCustomizer = apiCustomizer;
-    }
-
-    @PostConstruct
-    private void createApiData() {
-
-        /**
-         * Adding default headers to ApiData
-         */
-        ApiData.addApiHeadersToAppHeadersIfNotExist(apiCustomizer.getHeaders());
-        ApiData.addApiHeadersToAppHeadersIfNotExist(apiCustomizer.getApiHeaders());
-        ApiData.addSecurityHeaderConfigsToAppHeadersIfNotExist(apiCustomizer.getSecurityHeaders());
-
-        /**
-         * Adding default YML Headers to ApiData
-         */
-        ApiData.addHeaderConfigsToAppHeadersIfNotExist(
-                OpenApiUtils.emptyIfNull(applicationApiConfig.getCommonHeaders()).values().stream().toList());
-        ApiData.addSecurityHeaderConfigsToAppHeadersIfNotExist(
-                OpenApiUtils.emptyIfNull(applicationApiConfig.getCommonSecurityHeaders()).values().stream().toList());
-
-        /**
-         * Adding API Specific YML Headers to ApiData
-         */
-        ApiData.addHeaderConfigsToAppHeadersIfNotExist(
-                applicationApiConfig.getApis().values().stream()
-                        .flatMap(api ->
-                                OpenApiUtils.emptyIfNull(api.getHeaders()).values().stream())
-                        .collect(Collectors.toList()));
-        ApiData.addSecurityHeaderConfigsToAppHeadersIfNotExist(
-                applicationApiConfig.getApis().values().stream()
-                        .flatMap(api ->
-                                OpenApiUtils.emptyIfNull(api.getSecurityHeaders()).values().stream())
-                        .collect(Collectors.toList()));
     }
 
     public void customizeOpenAPI(OpenAPI openAPI, ApiConfig apiConfig) {
@@ -260,13 +230,14 @@ public class SpringDocCustomizerActions {
         if (Objects.isNull(apiHeader)) {
             return null;
         }
-        final HeaderConfig headerConfig = new HeaderConfig();
-        headerConfig.setName(apiHeader.getName());
-        headerConfig.setRequired(apiHeader.isRequired());
-        headerConfig.setDescription(apiHeader.getDescription());
-        headerConfig.setDefaultValue(apiHeader.getDefaultValue());
-        headerConfig.setExample(apiHeader.getDefaultValue());
-        return headerConfig;
+        return HeaderConfig
+                .builder()
+                .name(apiHeader.getName())
+                .required(apiHeader.isRequired())
+                .description(apiHeader.getDescription())
+                .defaultValue(apiHeader.getDefaultValue())
+                .example(apiHeader.getDefaultValue())
+                .build();
     }
 
 }

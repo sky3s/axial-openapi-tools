@@ -31,59 +31,98 @@ public class ApiHeader {
      */
     private boolean defaultSecurityHeader;
 
-    public String getKey() {
-        return key;
+    private ApiHeader(Builder builder) {
+        key = builder.key;
+        name = builder.name;
+        defaultValue = builder.defaultValue;
+        required = builder.required;
+        description = builder.description;
+        defaultApiHeader = builder.defaultApiHeader;
+        defaultSecurityHeader = builder.defaultSecurityHeader;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
+    public static final class Builder {
+        private String key;
+        private String name;
+        private String defaultValue;
+        private boolean required;
+        private String description;
+        private boolean defaultApiHeader;
+        private boolean defaultSecurityHeader;
+
+        private Builder() {
+        }
+
+        public Builder key(String val) {
+            key = val;
+            return this;
+        }
+
+        public Builder name(String val) {
+            name = val;
+            return this;
+        }
+
+        public Builder defaultValue(String val) {
+            defaultValue = val;
+            return this;
+        }
+
+        public Builder required(boolean val) {
+            required = val;
+            return this;
+        }
+
+        public Builder description(String val) {
+            description = val;
+            return this;
+        }
+
+        public Builder defaultApiHeader(boolean val) {
+            defaultApiHeader = val;
+            return this;
+        }
+
+        public Builder defaultSecurityHeader(boolean val) {
+            defaultSecurityHeader = val;
+            return this;
+        }
+
+        public ApiHeader build() {
+            return new ApiHeader(this);
+        }
+    }
+
+    public String getKey() {
+        return key;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDefaultValue() {
         return defaultValue;
-    }
-
-    public void setDefaultValue(String defaultValue) {
-        this.defaultValue = defaultValue;
     }
 
     public boolean isRequired() {
         return required;
     }
 
-    public void setRequired(boolean required) {
-        this.required = required;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public boolean isDefaultApiHeader() {
         return defaultApiHeader;
     }
 
-    public void setDefaultApiHeader(boolean defaultApiHeader) {
-        this.defaultApiHeader = defaultApiHeader;
-    }
-
     public boolean isDefaultSecurityHeader() {
         return defaultSecurityHeader;
-    }
-
-    public void setDefaultSecurityHeader(boolean defaultSecurityHeader) {
-        this.defaultSecurityHeader = defaultSecurityHeader;
     }
 }

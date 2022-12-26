@@ -71,12 +71,13 @@ public class ApiData {
         if (Objects.isNull(securityHeaderConfig)) {
             return null;
         }
-        final AppHeader appHeader = new AppHeader();
-        appHeader.setName(securityHeaderConfig.getName());
-        appHeader.setRequired(false);
-        appHeader.setDescription(securityHeaderConfig.getDescription());
-        appHeader.setDefaultValue(null);
-        return appHeader;
+        return AppHeader
+                .builder()
+                .name(securityHeaderConfig.getName())
+                .required(false)
+                .description(securityHeaderConfig.getDescription())
+                .defaultValue(null)
+                .build();
     }
 
 
@@ -105,12 +106,13 @@ public class ApiData {
         if (Objects.isNull(headerConfig)) {
             return null;
         }
-        final AppHeader appHeader = new AppHeader();
-        appHeader.setName(headerConfig.getName());
-        appHeader.setRequired(headerConfig.getRequired());
-        appHeader.setDescription(headerConfig.getDescription());
-        appHeader.setDefaultValue(headerConfig.getDefaultValue());
-        return appHeader;
+        return AppHeader
+                .builder()
+                .name(headerConfig.getName())
+                .required(headerConfig.getRequired())
+                .description(headerConfig.getDescription())
+                .defaultValue(headerConfig.getDefaultValue())
+                .build();
     }
 
 
@@ -139,12 +141,13 @@ public class ApiData {
         if (Objects.isNull(apiHeader)) {
             return null;
         }
-        final AppHeader appHeader = new AppHeader();
-        appHeader.setName(apiHeader.getName());
-        appHeader.setRequired(apiHeader.isRequired());
-        appHeader.setDescription(apiHeader.getDescription());
-        appHeader.setDefaultValue(apiHeader.getDefaultValue());
-        return appHeader;
+        return AppHeader
+                .builder()
+                .name(apiHeader.getName())
+                .required(apiHeader.isRequired())
+                .description(apiHeader.getDescription())
+                .defaultValue(apiHeader.getDefaultValue())
+                .build();
     }
 
 }

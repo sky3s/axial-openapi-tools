@@ -14,17 +14,18 @@ public interface ApiCustomizer {
 
     default List<ApiHeader> getDefaultHeaders() {
 
-        final List<ApiHeader> apiHeaders = new ArrayList<>();
-
-        ApiHeader apiHeader = new ApiHeader();
-        apiHeader.setKey("XForwardedFor");
-        apiHeader.setName("X-FORWARDED-FOR");
-        apiHeader.setDefaultValue("0.0.0.0");
-        apiHeader.setRequired(false);
-        apiHeader.setDescription("Redirect IP address");
-        apiHeader.setDefaultApiHeader(false);
-        apiHeader.setDefaultSecurityHeader(false);
-        apiHeaders.add(apiHeader);
+        final List<ApiHeader> apiHeaders = Arrays.asList(
+                ApiHeader
+                        .builder()
+                        .key("XForwardedFor")
+                        .name("X-FORWARDED-FOR")
+                        .defaultValue("0.0.0.0")
+                        .required(false)
+                        .description("Redirect IP address")
+                        .defaultApiHeader(false)
+                        .defaultSecurityHeader(false)
+                        .build()
+        );
 
         return Collections.unmodifiableList(apiHeaders);
     }
