@@ -35,14 +35,14 @@ public interface ApiCustomizer {
     }
 
     default List<ApiHeader> getApiHeaders() {
-        return OpenApiUtils.emptyIfNull(getHeaders())
+        return OpenApiDataUtils.emptyIfNull(getHeaders())
                 .stream().filter(ApiHeader::isDefaultApiHeader).collect(Collectors.toUnmodifiableList());
     }
 
     default List<SecurityHeaderConfig> getSecurityHeaders() {
-        return OpenApiUtils.emptyIfNull(getHeaders()).stream()
+        return OpenApiDataUtils.emptyIfNull(getHeaders()).stream()
                 .filter(ApiHeader::isDefaultSecurityHeader)
-                .map(OpenApiUtils::convertApiHeaderToSecurityHeaderConfig)
+                .map(OpenApiMapper::convertApiHeaderToSecurityHeaderConfig)
                 .collect(Collectors.toUnmodifiableList());
     }
 

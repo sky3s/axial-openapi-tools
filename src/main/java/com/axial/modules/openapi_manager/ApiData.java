@@ -32,7 +32,7 @@ public class ApiData {
     }
 
     public static void addAppHeaderIfNotExist(List<AppHeader> headers) {
-        if (OpenApiUtils.isEmpty(headers)) {
+        if (OpenApiDataUtils.isEmpty(headers)) {
             return;
         }
         headers.forEach(hd -> addAppHeaderIfNotExist(hd));
@@ -50,7 +50,7 @@ public class ApiData {
      *  Adding Security Header Config
      */
     static void addSecurityHeaderConfigsToAppHeadersIfNotExist(List<SecurityHeaderConfig> securityHeaderConfigs) {
-        if (OpenApiUtils.isEmpty(securityHeaderConfigs)) {
+        if (OpenApiDataUtils.isEmpty(securityHeaderConfigs)) {
             return;
         }
         addAppHeaderIfNotExist(ApiData.convertSecurityHeaderConfigsToAppHeaders(securityHeaderConfigs));
@@ -61,7 +61,7 @@ public class ApiData {
     }
 
     private static List<AppHeader> convertSecurityHeaderConfigsToAppHeaders(List<SecurityHeaderConfig> securityHeaderConfigs) {
-        if (OpenApiUtils.isEmpty(securityHeaderConfigs)) {
+        if (OpenApiDataUtils.isEmpty(securityHeaderConfigs)) {
             return Collections.emptyList();
         }
         return securityHeaderConfigs.stream().map(ApiData::convertSecurityHeaderConfigToAppHeader).collect(Collectors.toList());
@@ -85,7 +85,7 @@ public class ApiData {
      *  Adding Header Config
      */
     static void addHeaderConfigsToAppHeadersIfNotExist(List<HeaderConfig> headerConfigs) {
-        if (OpenApiUtils.isEmpty(headerConfigs)) {
+        if (OpenApiDataUtils.isEmpty(headerConfigs)) {
             return;
         }
         addAppHeaderIfNotExist(ApiData.convertHeaderConfigsToAppHeaders(headerConfigs));
@@ -96,7 +96,7 @@ public class ApiData {
     }
 
     private static List<AppHeader> convertHeaderConfigsToAppHeaders(List<HeaderConfig> headerConfigs) {
-        if (OpenApiUtils.isEmpty(headerConfigs)) {
+        if (OpenApiDataUtils.isEmpty(headerConfigs)) {
             return Collections.emptyList();
         }
         return headerConfigs.stream().map(ApiData::convertHeaderConfigToAppHeader).collect(Collectors.toList());
@@ -120,7 +120,7 @@ public class ApiData {
      *  Adding Api Header
      */
     static void addApiHeadersToAppHeadersIfNotExist(List<ApiHeader> apiHeaders) {
-        if (OpenApiUtils.isEmpty(apiHeaders)) {
+        if (OpenApiDataUtils.isEmpty(apiHeaders)) {
             return;
         }
         addAppHeaderIfNotExist(ApiData.convertApiHeadersToAppHeaders(apiHeaders));
@@ -131,7 +131,7 @@ public class ApiData {
     }
 
     private static List<AppHeader> convertApiHeadersToAppHeaders(List<ApiHeader> apiHeaders) {
-        if (OpenApiUtils.isEmpty(apiHeaders)) {
+        if (OpenApiDataUtils.isEmpty(apiHeaders)) {
             return Collections.emptyList();
         }
         return apiHeaders.stream().map(ApiData::convertApiHeaderToAppHeader).collect(Collectors.toList());

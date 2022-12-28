@@ -17,6 +17,9 @@
 
         <java.version>17</java.version>
 
+        <!-- Axial Module Dependencies -->
+        <!-- <axial-modules-commons.version>0.0.1</axial-modules-commons.version> -->
+
         <!-- Maven Dependencies -->
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
@@ -30,6 +33,15 @@
     </properties>
 
     <dependencies>
+
+        <!-- Axial Module Dependencies -->
+        <!--
+        <dependency>
+            <groupId>com.axial.spring.modules</groupId>
+            <artifactId>commons</artifactId>
+            <version>${axial-modules-commons.version}</version>
+        </dependency>
+        -->
 
         <!-- Spring Dependencies -->
         <!-- Core starter, including auto-configuration support, logging and YAML -->

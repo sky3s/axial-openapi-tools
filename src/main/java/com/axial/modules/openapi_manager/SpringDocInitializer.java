@@ -54,9 +54,9 @@ public class SpringDocInitializer {
          * Adding default YML Headers to ApiData
          */
         ApiData.addHeaderConfigsToAppHeadersIfNotExist(
-                OpenApiUtils.emptyIfNull(applicationApiConfig.getCommonHeaders()).values().stream().toList());
+                OpenApiDataUtils.emptyIfNull(applicationApiConfig.getCommonHeaders()).values().stream().toList());
         ApiData.addSecurityHeaderConfigsToAppHeadersIfNotExist(
-                OpenApiUtils.emptyIfNull(applicationApiConfig.getCommonSecurityHeaders()).values().stream().toList());
+                OpenApiDataUtils.emptyIfNull(applicationApiConfig.getCommonSecurityHeaders()).values().stream().toList());
 
         /**
          * Adding API Specific YML Headers to ApiData
@@ -64,18 +64,16 @@ public class SpringDocInitializer {
         ApiData.addHeaderConfigsToAppHeadersIfNotExist(
                 applicationApiConfig.getApis().values().stream()
                         .flatMap(api ->
-                                OpenApiUtils.emptyIfNull(api.getHeaders()).values().stream())
+                                OpenApiDataUtils.emptyIfNull(api.getHeaders()).values().stream())
                         .collect(Collectors.toList()));
         ApiData.addSecurityHeaderConfigsToAppHeadersIfNotExist(
                 applicationApiConfig.getApis().values().stream()
                         .flatMap(api ->
-                                OpenApiUtils.emptyIfNull(api.getSecurityHeaders()).values().stream())
+                                OpenApiDataUtils.emptyIfNull(api.getSecurityHeaders()).values().stream())
                         .collect(Collectors.toList()));
     }
 
     private void addCustomizers() {
-
-        //GroupedOpenApi groupedOpenApi = (GroupedOpenApi) beanFactory.getBeanDefinition("BasicAPI");
 
         final Map<String, ApiConfig> apiMap = applicationApiConfig
                 .getApis()
@@ -83,8 +81,9 @@ public class SpringDocInitializer {
                 .stream()
                 .collect(Collectors.toMap(ApiConfig::getName, Function.identity()));
 
-        beanFactory
-                .getBeansOfType(GroupedOpenApi.class)
+        OpenApiDataUtils
+                .emptyIfNull(beanFactory
+                        .getBeansOfType(GroupedOpenApi.class))
                 .values().
                 forEach(groupedOpenApi ->
                         groupedOpenApi

@@ -23,7 +23,12 @@ public class ApiConfig {
 
     private String description;
 
-    public ApiConfig(String name, String groupName, String path, Map<String, SecurityHeaderConfig> securityHeaders, Map<String, HeaderConfig> headers, String description) {
+    public ApiConfig(String name,
+                     String groupName,
+                     String path,
+                     Map<String, SecurityHeaderConfig> securityHeaders,
+                     Map<String, HeaderConfig> headers,
+                     String description) {
         this.name = name;
         this.groupName = groupName;
         this.path = path;
