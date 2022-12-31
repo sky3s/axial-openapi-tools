@@ -1,7 +1,7 @@
-package com.axial.modules.openapi_manager;
+package com.axial.modules.openapi_tools;
 
-import com.axial.modules.openapi_manager.model.config.ApiConfig;
-import com.axial.modules.openapi_manager.model.config.ApplicationApiConfig;
+import com.axial.modules.openapi_tools.model.config.ApiConfig;
+import com.axial.modules.openapi_tools.model.config.ApplicationApiConfig;
 import jakarta.annotation.PostConstruct;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;

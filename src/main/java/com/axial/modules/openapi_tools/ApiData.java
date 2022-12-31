@@ -1,9 +1,9 @@
-package com.axial.modules.openapi_manager;
+package com.axial.modules.openapi_tools;
 
-import com.axial.modules.openapi_manager.model.ApiHeader;
-import com.axial.modules.openapi_manager.model.AppHeader;
-import com.axial.modules.openapi_manager.model.config.HeaderConfig;
-import com.axial.modules.openapi_manager.model.config.SecurityHeaderConfig;
+import com.axial.modules.openapi_tools.model.ApiHeader;
+import com.axial.modules.openapi_tools.model.AppHeader;
+import com.axial.modules.openapi_tools.model.config.HeaderConfig;
+import com.axial.modules.openapi_tools.model.config.SecurityHeaderConfig;
 
 import java.util.Collections;
 import java.util.List;

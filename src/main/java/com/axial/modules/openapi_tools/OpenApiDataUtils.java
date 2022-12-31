@@ -1,4 +1,4 @@
-package com.axial.modules.openapi_manager;
+package com.axial.modules.openapi_tools;
 
 import java.util.Collection;
 import java.util.Collections;

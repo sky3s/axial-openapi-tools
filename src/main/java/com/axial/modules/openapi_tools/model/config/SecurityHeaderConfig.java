@@ -1,4 +1,4 @@
-package com.axial.modules.openapi_manager.model.config;
+package com.axial.modules.openapi_tools.model.config;
 
 public class SecurityHeaderConfig {
 

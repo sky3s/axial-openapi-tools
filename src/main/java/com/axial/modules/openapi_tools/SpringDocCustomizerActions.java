@@ -1,10 +1,10 @@
-package com.axial.modules.openapi_manager;
+package com.axial.modules.openapi_tools;
 
-import com.axial.modules.openapi_manager.model.ApiHeader;
-import com.axial.modules.openapi_manager.model.config.ApiConfig;
-import com.axial.modules.openapi_manager.model.config.ApplicationApiConfig;
-import com.axial.modules.openapi_manager.model.config.HeaderConfig;
-import com.axial.modules.openapi_manager.model.config.SecurityHeaderConfig;
+import com.axial.modules.openapi_tools.model.ApiHeader;
+import com.axial.modules.openapi_tools.model.config.ApiConfig;
+import com.axial.modules.openapi_tools.model.config.ApplicationApiConfig;
+import com.axial.modules.openapi_tools.model.config.HeaderConfig;
+import com.axial.modules.openapi_tools.model.config.SecurityHeaderConfig;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.PathItem;
