@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.axial.spring.modules</groupId>
-    <artifactId>axial-openapi</artifactId>
+    <artifactId>axial-openapi-tools</artifactId>
     <version>0.0.1</version>
 
     <packaging>jar</packaging>
