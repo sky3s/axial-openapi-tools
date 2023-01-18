@@ -11,7 +11,7 @@
 
     <name>axial-openapi-tools</name>
     <description>Axial Spring Boot Openapi Tools, a tool for managing openapi definitions easily</description>
-    <url>https://github.com/sky3s/spring-openapi-manager</url>
+    <url>https://github.com/sky3s/axial-openapi-tools</url>
 
     <properties>
 
